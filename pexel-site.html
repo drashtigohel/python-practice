@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Pexel Web Studio</title>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@500;700;800&family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#F3F5F9;--surface:#fff;--ink:#10162F;--mute:#5A627D;--line:#DCE1EC;--blue:#2F5BFF;--coral:#FF5C7A;--mint:#17B897;--on-blue:#fff;
+box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media(prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#0C1022;--surface:#151B36;--ink:#EEF1FA;--mute:#9AA3C2;--line:#27305A;--blue:#6C8CFF;--on-blue:#0C1022}}
+:root[data-theme="dark"]{--bg:#0C1022;--surface:#151B36;--ink:#EEF1FA;--mute:#9AA3C2;--line:#27305A;--blue:#6C8CFF;--on-blue:#0C1022}
+html{scroll-padding-top:env(safe-area-inset-top,0px)}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font:400 17px/1.6 "DM Sans",system-ui,sans-serif}
+h1,h2,h3{font-family:"Bricolage Grotesque","DM Sans",sans-serif;line-height:1.08;margin:0 0 .5em;letter-spacing:-.02em}
+h1{font-size:clamp(2.6rem,7vw,5rem);font-weight:800}
+h2{font-size:clamp(1.9rem,4vw,2.9rem);font-weight:700}
+h3{font-size:1.3rem;font-weight:700}
+p{margin:0 0 1em;max-width:62ch}
+a{color:inherit}
+.wrap{max-width:1120px;margin:0 auto;padding:0 22px}
+header{position:sticky;top:env(safe-area-inset-top,0px);z-index:5;background:var(--bg);border-bottom:1px solid var(--line)}
+.bar{display:flex;align-items:center;justify-content:space-between;gap:14px;height:66px}
+.logo{display:flex;align-items:center;gap:10px;font:800 1.2rem "Bricolage Grotesque",sans-serif;text-decoration:none}
+.logo i{display:grid;grid-template:repeat(2,9px)/repeat(2,9px);gap:2px}
+.logo i b{background:var(--blue)}.logo i b:nth-child(2){background:var(--coral)}.logo i b:nth-child(3){background:var(--mint)}.logo i b:nth-child(4){background:var(--ink)}
+nav{display:flex;gap:4px;flex-wrap:wrap}
+nav a{text-decoration:none;padding:8px 13px;border-radius:8px;font-weight:500;font-size:.95rem;color:var(--mute)}
+nav a:hover{color:var(--ink)}
+nav a.on{background:var(--ink);color:var(--bg)}
+nav a:focus-visible,.btn:focus-visible,input:focus-visible,select:focus-visible,textarea:focus-visible{outline:3px solid var(--blue);outline-offset:2px}
+.menu{display:none;background:none;border:1px solid var(--line);color:var(--ink);border-radius:8px;padding:8px 12px;font:inherit}
+@media(max-width:760px){.menu{display:block}nav{display:none;position:absolute;top:66px;left:0;right:0;background:var(--bg);border-bottom:1px solid var(--line);padding:10px 22px;flex-direction:column}nav.open{display:flex}}
+.page{display:none;padding:56px 0 80px}.page.show{display:block}
+.btn{display:inline-block;background:var(--blue);color:var(--on-blue);padding:14px 26px;border-radius:10px;font-weight:700;text-decoration:none;border:0;font-size:1rem;cursor:pointer;font-family:inherit}
+.btn.alt{background:transparent;color:var(--ink);border:2px solid var(--ink)}
+.row{display:flex;gap:12px;flex-wrap:wrap;margin-top:26px}
+.hero{display:grid;grid-template-columns:1.1fr .9fr;gap:40px;align-items:center}
+@media(max-width:860px){.hero{grid-template-columns:1fr}}
+.px{display:grid;grid-template-columns:repeat(12,1fr);gap:5px;aspect-ratio:1;max-width:460px;width:100%;justify-self:center}
+.px span{background:var(--line);border-radius:3px;transition:background .5s}
+.px span.c1{background:var(--blue)}.px span.c2{background:var(--coral)}.px span.c3{background:var(--mint)}.px span.c4{background:var(--ink)}
+.px span:hover{background:var(--coral);transition:none}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:18px;margin-top:30px}
+.card{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:26px}
+.card .ic{width:44px;height:44px;border-radius:10px;display:grid;place-items:center;font-size:1.4rem;margin-bottom:14px;background:var(--bg)}
+.card p{color:var(--mute);margin:0}
+.stats{display:flex;gap:40px;flex-wrap:wrap;margin-top:44px;padding-top:26px;border-top:1px solid var(--line)}
+.stats b{display:block;font:800 2rem "Bricolage Grotesque",sans-serif}.stats span{color:var(--mute);font-size:.95rem}
+.band{background:var(--ink);color:var(--bg);border-radius:18px;padding:40px;margin-top:56px}
+.band p{color:inherit;opacity:.8}.band .btn{background:var(--coral);color:#10162F}
+.price{font:800 1.7rem "Bricolage Grotesque",sans-serif;margin:12px 0}
+.price small{font:400 .9rem "DM Sans",sans-serif;color:var(--mute)}
+ul.t{padding-left:20px;color:var(--mute);margin:0 0 18px}
+.two{display:grid;grid-template-columns:1fr 1fr;gap:40px}
+@media(max-width:820px){.two{grid-template-columns:1fr}}
+label{display:block;font-weight:500;margin:0 0 6px;font-size:.95rem}
+input,select,textarea{width:100%;padding:12px 14px;border:1px solid var(--line);border-radius:10px;background:var(--surface);color:var(--ink);font:inherit;margin-bottom:16px}
+.ok{display:none;padding:16px;border-radius:10px;background:var(--mint);color:#06281F;font-weight:500;margin-top:14px}
+footer{border-top:1px solid var(--line);padding:26px 0;color:var(--mute);font-size:.92rem}
+footer .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px}
+@media(prefers-reduced-motion:reduce){*{transition:none!important}}
+
+body{background:radial-gradient(900px 500px at 85% -5%,rgba(47,91,255,.18),transparent 60%),radial-gradient(700px 500px at -5% 25%,rgba(255,92,122,.14),transparent 60%),radial-gradient(600px 400px at 60% 90%,rgba(23,184,151,.12),transparent 60%),var(--bg);background-attachment:fixed}
+header{background:color-mix(in srgb,var(--bg) 78%,transparent);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px)}
+.page.show{animation:in .45s ease}
+@keyframes in{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:none}}
+.g{background:linear-gradient(90deg,var(--blue),var(--coral));-webkit-background-clip:text;background-clip:text;color:transparent}
+.btn{background:linear-gradient(135deg,var(--blue),#7A4DFF);color:#fff;box-shadow:0 10px 24px -8px rgba(47,91,255,.55);transition:transform .2s,box-shadow .2s}
+.btn:hover{transform:translateY(-3px);box-shadow:0 16px 30px -8px rgba(47,91,255,.6)}
+.btn.alt{background:transparent;box-shadow:none;color:var(--ink)}
+.card{transition:transform .25s,box-shadow .25s,border-color .25s;position:relative}
+.card:hover{transform:translateY(-6px);box-shadow:0 22px 40px -18px rgba(47,91,255,.35);border-color:var(--blue)}
+.card .ic{background:linear-gradient(135deg,rgba(47,91,255,.16),rgba(255,92,122,.16))}
+.grid .card:nth-child(3n+2) .ic{background:linear-gradient(135deg,rgba(255,92,122,.2),rgba(255,180,60,.2))}
+.grid .card:nth-child(3n) .ic{background:linear-gradient(135deg,rgba(23,184,151,.22),rgba(47,91,255,.16))}
+.band{background:linear-gradient(120deg,#1C2A8F,#2F5BFF 45%,#FF5C7A);color:#fff;position:relative;overflow:hidden}
+.band::after{content:"";position:absolute;right:-40px;top:-40px;width:220px;height:220px;background:repeating-linear-gradient(0deg,rgba(255,255,255,.14) 0 12px,transparent 12px 20px);border-radius:24px;transform:rotate(12deg)}
+.band .btn{background:#fff;color:#10162F;box-shadow:none;position:relative;z-index:1}
+.band h2,.band p{position:relative;z-index:1}
+.hv{position:relative;justify-self:center;width:100%;max-width:460px}
+.chip{position:absolute;background:var(--surface);border:1px solid var(--line);border-radius:999px;padding:9px 16px;font-weight:700;font-size:.9rem;box-shadow:0 12px 26px -10px rgba(16,22,47,.35);animation:fl 5s ease-in-out infinite}
+.chip:nth-of-type(1){top:6%;right:-4%}.chip:nth-of-type(2){bottom:16%;left:-6%;animation-delay:-1.6s}.chip:nth-of-type(3){bottom:-3%;right:6%;animation-delay:-3.2s}
+@keyframes fl{50%{transform:translateY(-12px)}}
+.mq{overflow:hidden;margin-top:48px;border-block:1px solid var(--line);padding:16px 0;white-space:nowrap}
+.mq div{display:inline-block;animation:mq 28s linear infinite;font:700 1.25rem "Bricolage Grotesque",sans-serif;color:var(--mute)}
+.mq span{margin:0 26px}.mq span::before{content:"";display:inline-block;width:10px;height:10px;background:var(--coral);margin-right:26px;border-radius:2px}
+@keyframes mq{to{transform:translateX(-50%)}}
+.steps{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:18px;margin-top:26px}
+.step{border-top:4px solid var(--blue);padding-top:16px}.step:nth-child(2){border-color:var(--coral)}.step:nth-child(3){border-color:var(--mint)}.step:nth-child(4){border-color:var(--ink)}
+.step b{font:800 2.2rem "Bricolage Grotesque",sans-serif}.step p{color:var(--mute);margin:0}
+.pop{border:2px solid var(--blue);background:linear-gradient(180deg,rgba(47,91,255,.09),var(--surface) 60%)}
+.pop::before{content:"Most popular";position:absolute;top:-13px;left:22px;background:linear-gradient(90deg,var(--blue),var(--coral));color:#fff;font-size:.8rem;font-weight:700;padding:4px 12px;border-radius:999px}
+.stats b{background:linear-gradient(90deg,var(--blue),var(--coral));-webkit-background-clip:text;background-clip:text;color:transparent}
+@media(prefers-reduced-motion:reduce){.chip,.mq div,.page.show{animation:none!important}}
+
+.work{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:18px;margin-top:26px}
+.shot{background:var(--surface);border:1px solid var(--line);border-radius:14px;overflow:hidden;transition:transform .25s,box-shadow .25s}
+.shot:hover{transform:translateY(-6px);box-shadow:0 22px 40px -18px rgba(47,91,255,.35)}
+.scr{height:170px;padding:14px;position:relative}
+.scr::before{content:"";position:absolute;top:10px;left:14px;width:8px;height:8px;border-radius:50%;background:#fff;box-shadow:14px 0 #fff,28px 0 #fff;opacity:.8}
+.scr i{display:block;background:rgba(255,255,255,.85);border-radius:6px}
+.scr i:nth-child(1){width:55%;height:16px;margin-top:22px}.scr i:nth-child(2){width:80%;height:9px;margin-top:10px;opacity:.6}.scr i:nth-child(3){width:30%;height:22px;margin-top:14px;background:#fff}
+.shot div.m{padding:16px 20px}.shot h3{margin:0 0 2px;font-size:1.1rem}.shot span{color:var(--mute);font-size:.9rem}
+.q p{font-size:1.02rem;color:var(--ink)}.q .who{display:flex;align-items:center;gap:12px;margin-top:16px}
+.av{width:40px;height:40px;border-radius:50%;display:grid;place-items:center;color:#fff;font-weight:700;background:linear-gradient(135deg,var(--blue),var(--coral))}
+.q small{color:var(--mute);display:block;line-height:1.3}
+details{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:16px 20px;margin-bottom:10px}
+summary{font-weight:700;cursor:pointer}details p{margin:10px 0 0;color:var(--mute)}
+footer{padding:48px 0 26px;margin-top:20px;background:var(--surface)}
+.fg{display:grid;grid-template-columns:1.4fr 1fr 1fr 1fr;gap:30px}
+@media(max-width:760px){.fg{grid-template-columns:1fr 1fr}}
+.fg h4{margin:0 0 10px;font:700 1rem "Bricolage Grotesque",sans-serif;color:var(--ink)}
+.fg a{display:block;text-decoration:none;padding:3px 0}.fg a:hover{color:var(--blue)}.fg p{font-size:.95rem}
+.copy{display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px;border-top:1px solid var(--line);margin-top:30px;padding-top:18px}
+.wa{position:fixed;right:18px;bottom:calc(18px + env(safe-area-inset-bottom,0px));z-index:9;background:#25D366;color:#06281F;font-weight:700;text-decoration:none;padding:13px 20px;border-radius:999px;box-shadow:0 12px 26px -8px rgba(37,211,102,.7)}
+</style>
+</head>
+<body>
+<header><div class="wrap bar">
+<a class="logo" href="#home"><i><b></b><b></b><b></b><b></b></i>Pexel Web Studio</a>
+<button class="menu" id="menu" aria-label="Menu">Menu</button>
+<nav id="nav"><a href="#home" data-p="home">Home</a><a href="#about" data-p="about">About</a><a href="#services" data-p="services">Services</a><a href="#products" data-p="products">Products</a><a href="#contact" data-p="contact">Contact us</a></nav>
+</div></header>
+
+<main class="wrap">
+<section class="page" id="home">
+<div class="hero"><div>
+<h1>Websites built <span class="g">pixel by pixel.</span></h1>
+<p>Pexel Web Studio designs and builds fast, good-looking websites and online stores for growing businesses. You get a site that looks sharp, loads quickly and brings in customers.</p>
+<div class="row"><a class="btn" href="#contact">Get a free quote</a><a class="btn alt" href="#services">See our services</a></div>
+</div><div class="hv"><div class="px" id="px" aria-hidden="true"></div><span class="chip">⚡ Lightning fast</span><span class="chip">📱 Mobile ready</span><span class="chip">🔍 SEO friendly</span></div></div>
+<div class="mq" aria-hidden="true"><div><span>Web design</span><span>Development</span><span>Online stores</span><span>SEO</span><span>UI/UX</span><span>Branding</span><span>Maintenance</span><span>Web design</span><span>Development</span><span>Online stores</span><span>SEO</span><span>UI/UX</span><span>Branding</span><span>Maintenance</span></div></div>
+<div class="stats"><div><b>120+</b><span>Websites launched</span></div><div><b>7 days</b><span>Typical first draft</span></div><div><b>98%</b><span>Clients who come back</span></div></div>
+<div class="grid">
+<div class="card"><div class="ic">🎨</div><h3>Design</h3><p>Layouts made around your brand, not a template.</p></div>
+<div class="card"><div class="ic">⚡</div><h3>Development</h3><p>Clean code that runs fast on every phone.</p></div>
+<div class="card"><div class="ic">🛒</div><h3>Online stores</h3><p>Sell products and take payments with ease.</p></div>
+</div>
+<h2 style="margin-top:60px">How we build your site</h2><div class="steps"><div class="step"><b>1</b><h3>Talk</h3><p>We learn about your business and goals.</p></div><div class="step"><b>2</b><h3>Design</h3><p>You see a clear design before we build.</p></div><div class="step"><b>3</b><h3>Build</h3><p>We code it fast and test on every device.</p></div><div class="step"><b>4</b><h3>Launch</h3><p>Your site goes live and we keep it healthy.</p></div></div>
+<h2 style="margin-top:60px">Recent work</h2><p style="color:var(--mute)">Sample projects to show our style.</p><div class="work"><div class="shot"><div class="scr" style="background:linear-gradient(135deg,#2F5BFF,#7A4DFF)"><i></i><i></i><i></i></div><div class="m"><h3>Spice Route Café</h3><span>Restaurant website + menu</span></div></div><div class="shot"><div class="scr" style="background:linear-gradient(135deg,#FF5C7A,#FFB43C)"><i></i><i></i><i></i></div><div class="m"><h3>Urban Threads</h3><span>Fashion online store</span></div></div><div class="shot"><div class="scr" style="background:linear-gradient(135deg,#17B897,#2F5BFF)"><i></i><i></i><i></i></div><div class="m"><h3>BrightPath Academy</h3><span>Education website</span></div></div></div><h2 style="margin-top:60px">What clients say</h2><div class="grid"><div class="card q"><p>“They delivered our website in one week and it looks amazing on phones.”</p><div class="who"><div class="av">M</div><div><b>Meera Shah</b><small>Cafe owner</small></div></div></div><div class="card q"><p>“Our online orders doubled after the new store went live.”</p><div class="who"><div class="av">J</div><div><b>Jay Patel</b><small>Fashion retailer</small></div></div></div><div class="card q"><p>“Clear pricing, quick replies and no surprises. Highly recommended.”</p><div class="who"><div class="av">A</div><div><b>Dr. Anita Joshi</b><small>Clinic director</small></div></div></div></div>
+<div class="band"><h2>Ready to start your website?</h2><p>Tell us about your business. We reply within one working day.</p><a class="btn" href="#contact">Talk to us</a></div>
+</section>
+
+<section class="page" id="about">
+<div class="two"><div>
+<h1>We are a small team that cares about details.</h1>
+<p>Pexel Web Studio started with one idea: every business deserves a website as good as its work. We are designers and developers who work directly with you, with no middlemen and no jargon.</p>
+<p>We plan, design, build and launch your site, then stay around to maintain it.</p>
+</div><div class="grid" style="margin-top:0;grid-template-columns:1fr">
+<div class="card"><h3>Our mission</h3><p>Make professional web design simple and affordable for local businesses.</p></div>
+<div class="card"><h3>How we work</h3><p>Talk, sketch, design, build, launch. You see progress at every step.</p></div>
+<div class="card"><h3>What we value</h3><p>Honest pricing, clear timelines and sites that load fast.</p></div>
+</div></div>
+</section>
+
+<section class="page" id="services">
+<h1>Services</h1>
+<p>Everything you need to get online and grow, from one team.</p>
+<div class="grid">
+<div class="card"><div class="ic">🖥️</div><h3>Website design</h3><p>Custom, mobile-friendly designs that match your brand.</p></div>
+<div class="card"><div class="ic">💻</div><h3>Web development</h3><p>Fast, secure websites and web apps built to last.</p></div>
+<div class="card"><div class="ic">🛍️</div><h3>E-commerce</h3><p>Online stores with payments, orders and inventory.</p></div>
+<div class="card"><div class="ic">🔍</div><h3>SEO</h3><p>Help customers find you on Google.</p></div>
+<div class="card"><div class="ic">📱</div><h3>UI/UX design</h3><p>Easy-to-use screens for websites and apps.</p></div>
+<div class="card"><div class="ic">🛠️</div><h3>Maintenance</h3><p>Updates, backups and fixes so your site stays healthy.</p></div>
+</div>
+<div class="band"><h2>Not sure what you need?</h2><p>Describe your business and we will suggest the right plan.</p><a class="btn" href="#contact">Ask us</a></div>
+</section>
+
+<section class="page" id="products">
+<h1>Products</h1>
+<p>Ready-made website packages you can launch quickly. Prices are examples; edit them to match your offer.</p>
+<div class="grid">
+<div class="card"><h3>Starter Site</h3><div class="price">₹9,999 <small>one-time</small></div><ul class="t"><li>Up to 5 pages</li><li>Mobile friendly</li><li>Contact form</li></ul><a class="btn alt" href="#contact">Choose Starter</a></div>
+<div class="card pop"><h3>Business Site</h3><div class="price">₹24,999 <small>one-time</small></div><ul class="t"><li>Up to 10 pages</li><li>Custom design</li><li>Basic SEO</li></ul><a class="btn" href="#contact">Choose Business</a></div>
+<div class="card"><h3>Online Store</h3><div class="price">₹49,999 <small>one-time</small></div><ul class="t"><li>Product catalogue</li><li>Payment gateway</li><li>Order management</li></ul><a class="btn alt" href="#contact">Choose Store</a></div>
+<div class="card"><h3>Care Plan</h3><div class="price">₹1,999 <small>per month</small></div><ul class="t"><li>Updates and backups</li><li>Security checks</li><li>Small edits included</li></ul><a class="btn alt" href="#contact">Choose Care</a></div>
+</div>
+</section>
+
+<section class="page" id="contact">
+<div class="two"><div>
+<h1>Let's talk about your website.</h1>
+<p>Send us a message and we will get back within one working day.</p>
+<p><b>Email:</b> hello@pexelwebstudio.com<br><b>Phone:</b> +91 00000 00000<br><b>Location:</b> Rajkot, Gujarat, India</p>
+</div>
+<form id="f" onsubmit="return sendForm(event)">
+<label for="n">Your name</label><input id="n" required>
+<label for="e">Email</label><input id="e" type="email" required>
+<label for="s">What do you need?</label><select id="s"><option>New website</option><option>Online store</option><option>Redesign</option><option>Something else</option></select>
+<label for="m">Message</label><textarea id="m" rows="4" required></textarea>
+<button class="btn" type="submit">Send message</button>
+<div class="ok" id="ok" role="status">Thanks! Your message is ready. We will reply soon.</div>
+</form></div>
+<h2 style="margin-top:56px">Common questions</h2><details><summary>How long does a website take?</summary><p>A simple site takes about a week. Larger sites and stores take 3 to 4 weeks.</p></details><details><summary>Can I update the site myself?</summary><p>Yes. We show you how, or our Care Plan handles updates for you.</p></details><details><summary>Will it work on mobile?</summary><p>Every site we build works on phones, tablets and computers.</p></details><details><summary>How do I pay?</summary><p>Half to start, half on launch. UPI, bank transfer and cards are accepted.</p></details>
+</section>
+</main>
+
+<footer><div class="wrap"><div class="fg"><div><h4>Pexel Web Studio</h4><p>Websites and online stores built pixel by pixel.</p></div><div><h4>Pages</h4><a href="#home">Home</a><a href="#about">About</a><a href="#services">Services</a><a href="#products">Products</a></div><div><h4>Contact</h4><a href="#contact">Contact us</a><a href="mailto:hello@pexelwebstudio.com">Email</a><p>Rajkot, Gujarat</p></div><div><h4>Follow</h4><a href="#">Instagram</a><a href="#">LinkedIn</a><a href="#">Facebook</a></div></div><div class="copy"><span>© 2026 Pexel Web Studio</span><span>Design. Build. Launch.</span></div></div></footer>
+<a class="wa" href="https://wa.me/910000000000" target="_blank" rel="noopener">💬 WhatsApp us</a>
+
+<script>
+var pages=["home","about","services","products","contact"];
+function route(){var h=(location.hash||"#home").slice(1);if(pages.indexOf(h)<0)h="home";
+pages.forEach(function(p){document.getElementById(p).classList.toggle("show",p===h)});
+document.querySelectorAll("nav a").forEach(function(a){a.classList.toggle("on",a.dataset.p===h)});
+document.getElementById("nav").classList.remove("open");window.scrollTo(0,0)}
+window.addEventListener("hashchange",route);route();
+document.getElementById("menu").onclick=function(){document.getElementById("nav").classList.toggle("open")};
+var px=document.getElementById("px"),cl=["c1","c2","c3","c4"];
+for(var i=0;i<144;i++){var s=document.createElement("span");px.appendChild(s)}
+var pat=[];for(var r=0;r<12;r++)for(var c=0;c<12;c++){var on=(c>=2&&c<=4&&r>=1&&r<=10)||(r>=1&&r<=2&&c>=2&&c<=8)||(r>=5&&r<=6&&c>=2&&c<=8)||(c>=7&&c<=8&&r>=1&&r<=6);if(on)pat.push(r*12+c)}
+pat.forEach(function(k,j){setTimeout(function(){px.children[k].classList.add(cl[(j%7)%4])},60*j)});
+function sendForm(e){e.preventDefault();document.getElementById("ok").style.display="block";document.getElementById("f").reset();return false}
+</script>
+</body>
+</html>
