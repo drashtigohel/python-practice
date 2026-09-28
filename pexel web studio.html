@@ -1,0 +1,1478 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pexel Web Studio | Creative Digital Agency</title>
+    <!-- Google Fonts & Font Awesome -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* ===== GLOBAL RESET & VARIABLES ===== */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --bg-dark: #05070a;
+            --bg-card: #0d1117;
+            --bg-light: #161b22;
+            --accent-1: #7c5cff;
+            --accent-2: #00d4ff;
+            --accent-3: #ff6b9d;
+            --accent-glow: #9b8aff;
+            --accent-soft: rgba(124, 92, 255, 0.12);
+            --text-primary: #f0f4fc;
+            --text-secondary: #9aa4b8;
+            --text-muted: #6b7588;
+            --border-light: #21262e;
+            --gradient-main: linear-gradient(135deg, #7c5cff 0%, #00d4ff 100%);
+            --gradient-warm: linear-gradient(135deg, #ff6b9d 0%, #ffb347 100%);
+            --gradient-mesh: radial-gradient(at 20% 30%, rgba(124, 92, 255, 0.15) 0%, transparent 50%),
+                             radial-gradient(at 80% 70%, rgba(0, 212, 255, 0.12) 0%, transparent 50%),
+                             radial-gradient(at 50% 50%, rgba(255, 107, 157, 0.06) 0%, transparent 70%);
+            --shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.8);
+            --shadow-glow: 0 0 40px rgba(124, 92, 255, 0.15);
+            --radius: 24px;
+            --radius-sm: 16px;
+            --radius-xs: 12px;
+            --transition: all 0.4s cubic-bezier(0.22, 1, 0.36, 1);
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            background: var(--bg-dark);
+            color: var(--text-primary);
+            line-height: 1.7;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+            overflow-x: hidden;
+            background-image: var(--gradient-mesh);
+            background-attachment: fixed;
+        }
+
+        a { text-decoration: none; color: inherit; }
+        ul { list-style: none; }
+        img { max-width: 100%; display: block; }
+
+        .container {
+            max-width: 1300px;
+            margin: 0 auto;
+            padding: 0 32px;
+        }
+
+        /* ===== CUSTOM SCROLLBAR ===== */
+        ::-webkit-scrollbar { width: 10px; }
+        ::-webkit-scrollbar-track { background: var(--bg-dark); }
+        ::-webkit-scrollbar-thumb {
+            background: linear-gradient(180deg, #7c5cff, #00d4ff);
+            border-radius: 10px;
+        }
+
+        /* ===== HEADER / NAVIGATION ===== */
+        header {
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            background: rgba(5, 7, 10, 0.75);
+            backdrop-filter: blur(20px) saturate(180%);
+            -webkit-backdrop-filter: blur(20px) saturate(180%);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+            transition: var(--transition);
+        }
+
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 16px 0;
+        }
+
+        .logo a {
+            font-size: 1.7rem;
+            font-weight: 800;
+            letter-spacing: -1px;
+            background: var(--gradient-main);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            transition: var(--transition);
+        }
+
+        .logo a i {
+            background: var(--gradient-main);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            font-size: 1.6rem;
+        }
+
+        .logo a span {
+            font-weight: 300;
+            color: var(--text-primary);
+            background: none;
+            -webkit-text-fill-color: white;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 8px;
+            align-items: center;
+        }
+
+        .nav-links a {
+            font-weight: 500;
+            font-size: 0.95rem;
+            color: var(--text-secondary);
+            transition: var(--transition);
+            position: relative;
+            padding: 8px 18px;
+            border-radius: 40px;
+        }
+
+        .nav-links a:hover {
+            color: var(--text-primary);
+            background: rgba(255, 255, 255, 0.05);
+        }
+
+        .nav-links a.active {
+            color: var(--text-primary);
+            background: var(--accent-soft);
+            box-shadow: inset 0 0 0 1px rgba(124, 92, 255, 0.3);
+        }
+
+        .btn-nav-cta {
+            background: var(--gradient-main);
+            padding: 10px 26px !important;
+            border-radius: 40px !important;
+            color: white !important;
+            font-weight: 600 !important;
+            box-shadow: 0 4px 20px rgba(124, 92, 255, 0.35);
+            transition: var(--transition) !important;
+        }
+
+        .btn-nav-cta:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 30px rgba(124, 92, 255, 0.5);
+            background: var(--gradient-main) !important;
+        }
+
+        /* ===== BUTTONS ===== */
+        .btn-primary {
+            background: var(--gradient-main);
+            padding: 14px 36px;
+            border-radius: 60px;
+            font-weight: 600;
+            color: white;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            transition: var(--transition);
+            border: none;
+            cursor: pointer;
+            box-shadow: 0 8px 30px -6px rgba(124, 92, 255, 0.4);
+            font-size: 1rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .btn-primary::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+            transition: 0.6s;
+        }
+
+        .btn-primary:hover::before {
+            left: 100%;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-3px) scale(1.02);
+            box-shadow: 0 20px 40px -8px rgba(124, 92, 255, 0.6);
+        }
+
+        .btn-outline {
+            border: 1.5px solid rgba(124, 92, 255, 0.5);
+            padding: 14px 36px;
+            border-radius: 60px;
+            font-weight: 600;
+            color: var(--text-primary);
+            transition: var(--transition);
+            background: rgba(124, 92, 255, 0.05);
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            cursor: pointer;
+            font-size: 1rem;
+        }
+
+        .btn-outline:hover {
+            background: rgba(124, 92, 255, 0.15);
+            border-color: var(--accent-1);
+            transform: translateY(-3px);
+            box-shadow: 0 15px 30px -8px rgba(124, 92, 255, 0.3);
+        }
+
+        .btn-lg {
+            padding: 18px 48px;
+            font-size: 1.1rem;
+        }
+
+        /* ===== PAGE SYSTEM ===== */
+        .page {
+            display: none;
+            flex: 1;
+            animation: pageReveal 0.6s cubic-bezier(0.22, 1, 0.36, 1);
+        }
+
+        .page.active {
+            display: block;
+        }
+
+        @keyframes pageReveal {
+            from {
+                opacity: 0;
+                transform: translateY(30px) scale(0.98);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0) scale(1);
+            }
+        }
+
+        /* ===== HERO SECTION ===== */
+        .hero {
+            padding: 100px 0 120px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero .container {
+            position: relative;
+            z-index: 2;
+        }
+
+        .hero-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: rgba(124, 92, 255, 0.1);
+            border: 1px solid rgba(124, 92, 255, 0.25);
+            padding: 8px 20px;
+            border-radius: 40px;
+            font-size: 0.9rem;
+            font-weight: 500;
+            color: var(--accent-glow);
+            margin-bottom: 28px;
+            animation: pulseGlow 3s ease-in-out infinite;
+        }
+
+        @keyframes pulseGlow {
+            0%, 100% { box-shadow: 0 0 0 0 rgba(124, 92, 255, 0.2); }
+            50% { box-shadow: 0 0 0 12px rgba(124, 92, 255, 0); }
+        }
+
+        .hero h1 {
+            font-size: 4.6rem;
+            font-weight: 800;
+            line-height: 1.1;
+            letter-spacing: -3px;
+            margin-bottom: 24px;
+            max-width: 900px;
+        }
+
+        .hero h1 .gradient-text {
+            background: var(--gradient-main);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            position: relative;
+        }
+
+        .hero h1 .gradient-text::after {
+            content: '';
+            position: absolute;
+            bottom: 8px;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: var(--gradient-main);
+            border-radius: 4px;
+            opacity: 0.3;
+        }
+
+        .hero p {
+            font-size: 1.25rem;
+            color: var(--text-secondary);
+            max-width: 620px;
+            margin-bottom: 44px;
+            line-height: 1.8;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 18px;
+            flex-wrap: wrap;
+            margin-bottom: 70px;
+        }
+
+        /* Floating orbs */
+        .orb {
+            position: absolute;
+            border-radius: 50%;
+            filter: blur(80px);
+            z-index: 0;
+            pointer-events: none;
+        }
+
+        .orb-1 {
+            width: 500px;
+            height: 500px;
+            background: rgba(124, 92, 255, 0.2);
+            top: -200px;
+            right: -100px;
+            animation: floatOrb 8s ease-in-out infinite;
+        }
+
+        .orb-2 {
+            width: 400px;
+            height: 400px;
+            background: rgba(0, 212, 255, 0.15);
+            bottom: -150px;
+            left: -100px;
+            animation: floatOrb 10s ease-in-out infinite reverse;
+        }
+
+        .orb-3 {
+            width: 300px;
+            height: 300px;
+            background: rgba(255, 107, 157, 0.1);
+            top: 40%;
+            left: 50%;
+            animation: floatOrb 12s ease-in-out infinite;
+        }
+
+        @keyframes floatOrb {
+            0%, 100% { transform: translate(0, 0) scale(1); }
+            33% { transform: translate(30px, -30px) scale(1.1); }
+            66% { transform: translate(-20px, 20px) scale(0.95); }
+        }
+
+        /* Stats bar */
+        .stats-bar {
+            display: flex;
+            gap: 60px;
+            flex-wrap: wrap;
+        }
+
+        .stat-item h3 {
+            font-size: 2.2rem;
+            font-weight: 800;
+            background: var(--gradient-main);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            line-height: 1.2;
+        }
+
+        .stat-item p {
+            font-size: 0.95rem;
+            color: var(--text-muted);
+            font-weight: 500;
+        }
+
+        /* ===== SECTION TITLES ===== */
+        .section-header {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+
+        .section-label {
+            display: inline-block;
+            font-size: 0.85rem;
+            font-weight: 700;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            background: var(--gradient-main);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            margin-bottom: 16px;
+        }
+
+        .section-title {
+            font-size: 2.8rem;
+            font-weight: 800;
+            letter-spacing: -1.5px;
+            margin-bottom: 16px;
+            line-height: 1.2;
+        }
+
+        .section-sub {
+            color: var(--text-secondary);
+            font-size: 1.1rem;
+            max-width: 560px;
+            margin: 0 auto;
+        }
+
+        /* ===== CARDS ===== */
+        .grid-3 {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 24px;
+        }
+
+        .card {
+            background: linear-gradient(145deg, rgba(22, 27, 34, 0.9), rgba(13, 17, 23, 0.95));
+            border: 1px solid rgba(255, 255, 255, 0.06);
+            border-radius: var(--radius);
+            padding: 40px 32px;
+            transition: var(--transition);
+            position: relative;
+            overflow: hidden;
+            backdrop-filter: blur(10px);
+        }
+
+        .card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: var(--gradient-main);
+            opacity: 0;
+            transition: var(--transition);
+        }
+
+        .card:hover {
+            transform: translateY(-10px);
+            border-color: rgba(124, 92, 255, 0.3);
+            box-shadow: 0 30px 60px -15px rgba(0, 0, 0, 0.8), 0 0 40px rgba(124, 92, 255, 0.08);
+        }
+
+        .card:hover::before {
+            opacity: 1;
+        }
+
+        .card-icon {
+            width: 64px;
+            height: 64px;
+            border-radius: var(--radius-xs);
+            background: var(--accent-soft);
+            border: 1px solid rgba(124, 92, 255, 0.2);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 24px;
+            font-size: 1.6rem;
+            color: var(--accent-glow);
+            transition: var(--transition);
+        }
+
+        .card:hover .card-icon {
+            background: var(--gradient-main);
+            color: white;
+            border-color: transparent;
+            transform: scale(1.1) rotate(-5deg);
+            box-shadow: 0 10px 30px rgba(124, 92, 255, 0.4);
+        }
+
+        .card h3 {
+            font-size: 1.4rem;
+            font-weight: 700;
+            margin-bottom: 12px;
+            letter-spacing: -0.5px;
+        }
+
+        .card p {
+            color: var(--text-secondary);
+            font-size: 0.98rem;
+            line-height: 1.7;
+        }
+
+        /* ===== TESTIMONIALS ===== */
+        .testimonial-card {
+            background: linear-gradient(145deg, rgba(22, 27, 34, 0.9), rgba(13, 17, 23, 0.95));
+            border: 1px solid rgba(255, 255, 255, 0.06);
+            padding: 36px 32px;
+            border-radius: var(--radius);
+            transition: var(--transition);
+            position: relative;
+        }
+
+        .testimonial-card::before {
+            content: '"';
+            position: absolute;
+            top: 20px;
+            right: 30px;
+            font-size: 5rem;
+            font-weight: 800;
+            background: var(--gradient-main);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            opacity: 0.15;
+            line-height: 1;
+            font-family: Georgia, serif;
+        }
+
+        .testimonial-card:hover {
+            transform: translateY(-6px);
+            border-color: rgba(124, 92, 255, 0.2);
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.8);
+        }
+
+        .testimonial-card p {
+            font-style: italic;
+            color: var(--text-secondary);
+            margin-bottom: 24px;
+            font-size: 1rem;
+            line-height: 1.8;
+        }
+
+        .testimonial-author {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+        }
+
+        .testimonial-author .avatar {
+            width: 52px;
+            height: 52px;
+            border-radius: 50%;
+            background: var(--gradient-main);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            color: white;
+            font-size: 1.1rem;
+            box-shadow: 0 8px 20px rgba(124, 92, 255, 0.3);
+        }
+
+        .stars {
+            color: #ffb347;
+            font-size: 0.85rem;
+            margin-bottom: 4px;
+        }
+
+        /* ===== ABOUT PAGE ===== */
+        .about-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 70px;
+            align-items: center;
+        }
+
+        .about-visual {
+            position: relative;
+        }
+
+        .about-visual-main {
+            background: linear-gradient(145deg, rgba(22, 27, 34, 0.95), rgba(13, 17, 23, 0.98));
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: var(--radius);
+            padding: 60px 40px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .about-visual-main::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: conic-gradient(from 0deg, transparent, rgba(124, 92, 255, 0.1), transparent, rgba(0, 212, 255, 0.1), transparent);
+            animation: rotate 10s linear infinite;
+        }
+
+        @keyframes rotate {
+            to { transform: rotate(360deg); }
+        }
+
+        .about-visual-main i {
+            font-size: 5rem;
+            background: var(--gradient-main);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            margin-bottom: 24px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .about-visual-main h4 {
+            font-size: 1.8rem;
+            font-weight: 800;
+            position: relative;
+            z-index: 1;
+        }
+
+        .about-visual-main p {
+            color: var(--text-secondary);
+            position: relative;
+            z-index: 1;
+        }
+
+        .about-floating-card {
+            position: absolute;
+            bottom: -20px;
+            right: -20px;
+            background: linear-gradient(145deg, #1a1f2b, #0d1117);
+            border: 1px solid rgba(124, 92, 255, 0.3);
+            border-radius: var(--radius-sm);
+            padding: 20px 28px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.6);
+            animation: floatCard 4s ease-in-out infinite;
+        }
+
+        @keyframes floatCard {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+
+        .about-floating-card h5 {
+            font-size: 1.8rem;
+            font-weight: 800;
+            background: var(--gradient-warm);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+
+        .about-floating-card p {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+        }
+
+        .about-text h2 {
+            font-size: 2.6rem;
+            font-weight: 800;
+            letter-spacing: -1.5px;
+            margin-bottom: 20px;
+            line-height: 1.2;
+        }
+
+        .about-text p {
+            color: var(--text-secondary);
+            margin-bottom: 20px;
+            font-size: 1.05rem;
+            line-height: 1.8;
+        }
+
+        .skill-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-top: 30px;
+        }
+
+        .skill-tags span {
+            background: rgba(124, 92, 255, 0.08);
+            color: var(--accent-glow);
+            padding: 8px 20px;
+            border-radius: 40px;
+            font-weight: 500;
+            font-size: 0.9rem;
+            border: 1px solid rgba(124, 92, 255, 0.2);
+            transition: var(--transition);
+        }
+
+        .skill-tags span:hover {
+            background: rgba(124, 92, 255, 0.2);
+            border-color: var(--accent-1);
+            transform: translateY(-2px);
+        }
+
+        /* ===== PRICING ===== */
+        .pricing-card {
+            background: linear-gradient(145deg, rgba(22, 27, 34, 0.9), rgba(13, 17, 23, 0.95));
+            border: 1px solid rgba(255, 255, 255, 0.06);
+            border-radius: var(--radius);
+            padding: 44px 36px;
+            transition: var(--transition);
+            position: relative;
+            text-align: center;
+        }
+
+        .pricing-card:hover {
+            transform: translateY(-8px);
+            border-color: rgba(124, 92, 255, 0.25);
+            box-shadow: 0 30px 60px -15px rgba(0, 0, 0, 0.8);
+        }
+
+        .pricing-card.popular {
+            border-color: rgba(124, 92, 255, 0.4);
+            box-shadow: 0 0 50px rgba(124, 92, 255, 0.1);
+            background: linear-gradient(145deg, rgba(30, 24, 60, 0.95), rgba(13, 17, 23, 0.98));
+        }
+
+        .popular-badge {
+            position: absolute;
+            top: -14px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: var(--gradient-main);
+            padding: 6px 24px;
+            border-radius: 40px;
+            font-size: 0.8rem;
+            font-weight: 700;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            box-shadow: 0 8px 20px rgba(124, 92, 255, 0.4);
+        }
+
+        .pricing-card h3 {
+            font-size: 1.4rem;
+            font-weight: 700;
+            margin-bottom: 8px;
+        }
+
+        .price-tag {
+            font-size: 3rem;
+            font-weight: 800;
+            letter-spacing: -2px;
+            background: var(--gradient-main);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            line-height: 1.2;
+            margin: 16px 0;
+        }
+
+        .price-tag span {
+            font-size: 1rem;
+            color: var(--text-muted);
+            font-weight: 500;
+            background: none;
+            -webkit-text-fill-color: var(--text-muted);
+        }
+
+        .pricing-features {
+            text-align: left;
+            margin: 28px 0;
+            display: flex;
+            flex-direction: column;
+            gap: 14px;
+        }
+
+        .pricing-features li {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            color: var(--text-secondary);
+            font-size: 0.95rem;
+        }
+
+        .pricing-features li i {
+            color: var(--accent-glow);
+            font-size: 0.9rem;
+        }
+
+        /* ===== PRODUCTS ===== */
+        .product-card {
+            background: linear-gradient(145deg, rgba(22, 27, 34, 0.9), rgba(13, 17, 23, 0.95));
+            border: 1px solid rgba(255, 255, 255, 0.06);
+            border-radius: var(--radius);
+            padding: 40px 32px;
+            transition: var(--transition);
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .product-card::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 3px;
+            background: var(--gradient-main);
+            transform: scaleX(0);
+            transition: var(--transition);
+        }
+
+        .product-card:hover::after {
+            transform: scaleX(1);
+        }
+
+        .product-card:hover {
+            transform: translateY(-10px);
+            border-color: rgba(124, 92, 255, 0.3);
+            box-shadow: 0 30px 60px -15px rgba(0, 0, 0, 0.8), 0 0 40px rgba(124, 92, 255, 0.08);
+        }
+
+        /* ===== CONTACT ===== */
+        .contact-grid {
+            display: grid;
+            grid-template-columns: 1fr 1.3fr;
+            gap: 60px;
+            align-items: start;
+        }
+
+        .contact-info {
+            display: flex;
+            flex-direction: column;
+            gap: 24px;
+        }
+
+        .contact-item {
+            display: flex;
+            gap: 20px;
+            align-items: center;
+            padding: 20px;
+            background: rgba(22, 27, 34, 0.5);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            border-radius: var(--radius-sm);
+            transition: var(--transition);
+        }
+
+        .contact-item:hover {
+            border-color: rgba(124, 92, 255, 0.3);
+            background: rgba(124, 92, 255, 0.05);
+            transform: translateX(6px);
+        }
+
+        .contact-item i {
+            font-size: 1.4rem;
+            width: 52px;
+            height: 52px;
+            background: var(--accent-soft);
+            border-radius: var(--radius-xs);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--accent-glow);
+            border: 1px solid rgba(124, 92, 255, 0.2);
+            flex-shrink: 0;
+        }
+
+        .contact-item h4 {
+            font-size: 1rem;
+            font-weight: 600;
+            margin-bottom: 2px;
+        }
+
+        .contact-item p {
+            color: var(--text-secondary);
+            font-size: 0.95rem;
+        }
+
+        .contact-form {
+            background: linear-gradient(145deg, rgba(22, 27, 34, 0.9), rgba(13, 17, 23, 0.95));
+            border: 1px solid rgba(255, 255, 255, 0.06);
+            border-radius: var(--radius);
+            padding: 44px 40px;
+        }
+
+        .contact-form input,
+        .contact-form textarea {
+            width: 100%;
+            padding: 16px 20px;
+            background: rgba(5, 7, 10, 0.6);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: var(--radius-xs);
+            color: white;
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            font-size: 1rem;
+            margin-bottom: 20px;
+            transition: var(--transition);
+            outline: none;
+        }
+
+        .contact-form input:focus,
+        .contact-form textarea:focus {
+            border-color: var(--accent-1);
+            box-shadow: 0 0 0 4px rgba(124, 92, 255, 0.1);
+            background: rgba(5, 7, 10, 0.8);
+        }
+
+        .contact-form input::placeholder,
+        .contact-form textarea::placeholder {
+            color: var(--text-muted);
+        }
+
+        .contact-form textarea {
+            resize: vertical;
+            min-height: 150px;
+        }
+
+        /* ===== FOOTER ===== */
+        footer {
+            border-top: 1px solid rgba(255, 255, 255, 0.06);
+            padding: 50px 0 30px;
+            margin-top: 80px;
+            background: rgba(5, 7, 10, 0.8);
+            backdrop-filter: blur(20px);
+        }
+
+        .footer-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 30px;
+        }
+
+        .footer-links {
+            display: flex;
+            gap: 8px;
+            flex-wrap: wrap;
+        }
+
+        .footer-links a {
+            color: var(--text-muted);
+            transition: var(--transition);
+            padding: 8px 16px;
+            border-radius: 40px;
+            font-size: 0.95rem;
+        }
+
+        .footer-links a:hover {
+            color: var(--text-primary);
+            background: rgba(255, 255, 255, 0.05);
+        }
+
+        .social-icons {
+            display: flex;
+            gap: 12px;
+        }
+
+        .social-icons a {
+            width: 44px;
+            height: 44px;
+            border-radius: 50%;
+            background: rgba(22, 27, 34, 0.8);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--text-secondary);
+            transition: var(--transition);
+            border: 1px solid rgba(255, 255, 255, 0.06);
+        }
+
+        .social-icons a:hover {
+            background: var(--gradient-main);
+            color: white;
+            transform: translateY(-4px) scale(1.05);
+            border-color: transparent;
+            box-shadow: 0 12px 25px rgba(124, 92, 255, 0.4);
+        }
+
+        .copyright {
+            color: var(--text-muted);
+            font-size: 0.9rem;
+            text-align: center;
+            margin-top: 30px;
+        }
+
+        .copyright i {
+            color: var(--accent-3);
+        }
+
+        /* ===== RESPONSIVE ===== */
+        @media (max-width: 1024px) {
+            .hero h1 { font-size: 3.4rem; }
+            .about-grid { grid-template-columns: 1fr; gap: 50px; }
+            .contact-grid { grid-template-columns: 1fr; }
+            .stats-bar { gap: 40px; }
+        }
+
+        @media (max-width: 768px) {
+            .container { padding: 0 20px; }
+            .navbar { flex-direction: column; gap: 16px; }
+            .nav-links { gap: 4px; flex-wrap: wrap; justify-content: center; }
+            .nav-links a { padding: 6px 14px; font-size: 0.88rem; }
+            .hero { padding: 60px 0 80px; }
+            .hero h1 { font-size: 2.4rem; letter-spacing: -1.5px; }
+            .hero p { font-size: 1.05rem; }
+            .section-title { font-size: 2rem; }
+            .btn-lg { padding: 15px 32px; font-size: 1rem; }
+            .stats-bar { gap: 30px; }
+            .stat-item h3 { font-size: 1.6rem; }
+            .footer-content { flex-direction: column; text-align: center; }
+            .grid-3 { grid-template-columns: 1fr; }
+            .contact-form { padding: 28px 24px; }
+        }
+
+        @media (max-width: 480px) {
+            .hero h1 { font-size: 1.9rem; }
+            .hero-buttons { flex-direction: column; }
+            .btn-primary, .btn-outline { width: 100%; justify-content: center; }
+            .about-visual-main { padding: 40px 24px; }
+            .about-floating-card { position: static; margin-top: 20px; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- ===== HEADER ===== -->
+    <header>
+        <div class="container navbar">
+            <div class="logo">
+                <a href="#" data-page="home"><i class="fas fa-cube"></i>Pexel<span>Studio</span></a>
+            </div>
+            <nav class="nav-links">
+                <a href="#" data-page="home" class="active">Home</a>
+                <a href="#" data-page="about">About</a>
+                <a href="#" data-page="services">Services</a>
+                <a href="#" data-page="products">Products</a>
+                <a href="#" data-page="contact">Contact</a>
+                <a href="#" class="btn-nav-cta" data-page="contact">Let's Talk</a>
+            </nav>
+        </div>
+    </header>
+
+    <!-- ===== HOME PAGE ===== -->
+    <section id="home" class="page active">
+        <!-- HERO -->
+        <div class="hero">
+            <div class="orb orb-1"></div>
+            <div class="orb orb-2"></div>
+            <div class="orb orb-3"></div>
+            <div class="container">
+                <div class="hero-badge">
+                    <i class="fas fa-bolt"></i> Creative Digital Agency
+                </div>
+                <h1>
+                    We Design. We Develop.<br>
+                    <span class="gradient-text">We Deliver.</span>
+                </h1>
+                <p>Pexel Web Studio crafts stunning websites, powerful e‑commerce stores, and unforgettable brand experiences that help your business grow.</p>
+                <div class="hero-buttons">
+                    <a href="#" class="btn-primary btn-lg" data-page="contact">Start Your Project <i class="fas fa-arrow-right"></i></a>
+                    <a href="#" class="btn-outline btn-lg" data-page="services">Explore Services</a>
+                </div>
+                <div class="stats-bar">
+                    <div class="stat-item">
+                        <h3>150+</h3>
+                        <p>Projects Delivered</p>
+                    </div>
+                    <div class="stat-item">
+                        <h3>98%</h3>
+                        <p>Client Satisfaction</p>
+                    </div>
+                    <div class="stat-item">
+                        <h3>7+</h3>
+                        <p>Years Experience</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- SERVICES PREVIEW -->
+        <div class="container" style="padding-bottom: 100px;">
+            <div class="section-header">
+                <span class="section-label">What We Do</span>
+                <h2 class="section-title">Services That Drive Results</h2>
+                <p class="section-sub">From concept to launch — we handle everything with precision and passion.</p>
+            </div>
+            <div class="grid-3">
+                <div class="card">
+                    <div class="card-icon"><i class="fas fa-paint-brush"></i></div>
+                    <h3>Web Design</h3>
+                    <p>Beautiful, responsive UI/UX designs that convert visitors into loyal customers.</p>
+                </div>
+                <div class="card">
+                    <div class="card-icon"><i class="fas fa-code"></i></div>
+                    <h3>Web Development</h3>
+                    <p>Fast, secure, and scalable websites built with modern technologies.</p>
+                </div>
+                <div class="card">
+                    <div class="card-icon"><i class="fas fa-chart-line"></i></div>
+                    <h3>SEO & Marketing</h3>
+                    <p>Rank higher and grow your audience with data‑driven strategies.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- TESTIMONIALS -->
+        <div class="container" style="padding-bottom: 100px;">
+            <div class="section-header">
+                <span class="section-label">Testimonials</span>
+                <h2 class="section-title">Loved by Clients Worldwide</h2>
+                <p class="section-sub">Don't just take our word for it — here's what they say.</p>
+            </div>
+            <div class="grid-3">
+                <div class="testimonial-card">
+                    <div class="stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+                    <p>"Pexel Web Studio transformed our online presence completely. Sales increased by 200% in just 3 months!"</p>
+                    <div class="testimonial-author">
+                        <div class="avatar">RK</div>
+                        <div><strong>Rahul K.</strong><br><span style="color:var(--text-muted);font-size:0.85rem;">E‑commerce Owner</span></div>
+                    </div>
+                </div>
+                <div class="testimonial-card">
+                    <div class="stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+                    <p>"Professional, creative, and always on time. They built our entire brand identity from scratch."</p>
+                    <div class="testimonial-author">
+                        <div class="avatar" style="background:var(--gradient-warm);">SP</div>
+                        <div><strong>Sarah P.</strong><br><span style="color:var(--text-muted);font-size:0.85rem;">Startup Founder</span></div>
+                    </div>
+                </div>
+                <div class="testimonial-card">
+                    <div class="stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star-half-alt"></i></div>
+                    <p>"The team is incredibly talented. Our website looks like a million bucks but cost a fraction."</p>
+                    <div class="testimonial-author">
+                        <div class="avatar" style="background:linear-gradient(135deg,#ff6b9d,#ffb347);">MJ</div>
+                        <div><strong>Michael J.</strong><br><span style="color:var(--text-muted);font-size:0.85rem;">Creative Director</span></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== ABOUT PAGE ===== -->
+    <section id="about" class="page">
+        <div class="container" style="padding: 80px 0;">
+            <div class="section-header">
+                <span class="section-label">About Us</span>
+                <h2 class="section-title">The Studio Behind the Magic</h2>
+                <p class="section-sub">A passionate team of designers, developers, and strategists.</p>
+            </div>
+
+            <div class="about-grid">
+                <div class="about-visual">
+                    <div class="about-visual-main">
+                        <i class="fas fa-cubes"></i>
+                        <h4>Since 2018</h4>
+                        <p>Building digital excellence</p>
+                    </div>
+                    <div class="about-floating-card">
+                        <h5>150+</h5>
+                        <p>Happy Clients</p>
+                    </div>
+                </div>
+                <div class="about-text">
+                    <h2>We turn ideas into <span style="background:var(--gradient-main);-webkit-background-clip:text;background-clip:text;color:transparent;">digital reality</span></h2>
+                    <p>Founded in 2018, Pexel Web Studio has helped over 150+ businesses establish a powerful online presence. We combine creative design with robust engineering to deliver websites that not only look stunning but perform flawlessly.</p>
+                    <p>Our mission is simple: make world‑class web design accessible to everyone. Whether you're a startup or an established brand, we treat every project with the same dedication and attention to detail.</p>
+                    <div class="skill-tags">
+                        <span>UI/UX Design</span>
+                        <span>React & Next.js</span>
+                        <span>WordPress</span>
+                        <span>E‑commerce</span>
+                        <span>SEO</span>
+                        <span>Branding</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- TEAM -->
+            <div style="margin-top: 100px;">
+                <div class="section-header">
+                    <span class="section-label">Our Team</span>
+                    <h2 class="section-title">Meet The Creative Minds</h2>
+                    <p class="section-sub">The talented people behind Pexel.</p>
+                </div>
+                <div class="grid-3">
+                    <div class="card" style="text-align:center;">
+                        <div class="card-icon" style="margin:0 auto 24px;"><i class="fas fa-user-tie"></i></div>
+                        <h3>Alex Rivera</h3>
+                        <p style="color:var(--accent-glow);font-weight:600;margin-bottom:8px;">Founder & Creative Director</p>
+                        <p>10+ years of design leadership.</p>
+                    </div>
+                    <div class="card" style="text-align:center;">
+                        <div class="card-icon" style="margin:0 auto 24px;"><i class="fas fa-user-cog"></i></div>
+                        <h3>Priya Sharma</h3>
+                        <p style="color:var(--accent-glow);font-weight:600;margin-bottom:8px;">Lead Developer</p>
+                        <p>Full‑stack expert in modern frameworks.</p>
+                    </div>
+                    <div class="card" style="text-align:center;">
+                        <div class="card-icon" style="margin:0 auto 24px;"><i class="fas fa-chart-pie"></i></div>
+                        <h3>David Chen</h3>
+                        <p style="color:var(--accent-glow);font-weight:600;margin-bottom:8px;">SEO & Marketing Head</p>
+                        <p>Data‑driven growth strategist.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== SERVICES PAGE ===== -->
+    <section id="services" class="page">
+        <div class="container" style="padding: 80px 0;">
+            <div class="section-header">
+                <span class="section-label">Services</span>
+                <h2 class="section-title">Everything You Need to Succeed</h2>
+                <p class="section-sub">Comprehensive digital services — under one roof.</p>
+            </div>
+            <div class="grid-3" style="margin-bottom: 80px;">
+                <div class="card">
+                    <div class="card-icon"><i class="fas fa-laptop-code"></i></div>
+                    <h3>Web Design</h3>
+                    <p>Custom, responsive designs that reflect your brand and engage users.</p>
+                </div>
+                <div class="card">
+                    <div class="card-icon"><i class="fas fa-cart-plus"></i></div>
+                    <h3>E‑commerce</h3>
+                    <p>Powerful online stores with secure payments and inventory management.</p>
+                </div>
+                <div class="card">
+                    <div class="card-icon"><i class="fas fa-mobile-alt"></i></div>
+                    <h3>Responsive Development</h3>
+                    <p>Websites that look and work perfectly on every device.</p>
+                </div>
+                <div class="card">
+                    <div class="card-icon"><i class="fas fa-search"></i></div>
+                    <h3>SEO Optimization</h3>
+                    <p>Get found on Google with on‑page and technical SEO.</p>
+                </div>
+                <div class="card">
+                    <div class="card-icon"><i class="fas fa-palette"></i></div>
+                    <h3>Branding & Logo</h3>
+                    <p>Memorable brand identities that stand out from the crowd.</p>
+                </div>
+                <div class="card">
+                    <div class="card-icon"><i class="fas fa-tools"></i></div>
+                    <h3>Maintenance & Support</h3>
+                    <p>Ongoing updates, security, and performance monitoring.</p>
+                </div>
+            </div>
+
+            <!-- PRICING -->
+            <div class="section-header">
+                <span class="section-label">Pricing</span>
+                <h2 class="section-title">Simple, Transparent Pricing</h2>
+                <p class="section-sub">Choose the package that fits your needs.</p>
+            </div>
+            <div class="grid-3">
+                <div class="pricing-card">
+                    <h3>Basic</h3>
+                    <div class="price-tag">$499 <span>/ project</span></div>
+                    <ul class="pricing-features">
+                        <li><i class="fas fa-check-circle"></i> 5‑page website</li>
+                        <li><i class="fas fa-check-circle"></i> Responsive design</li>
+                        <li><i class="fas fa-check-circle"></i> Basic SEO</li>
+                        <li><i class="fas fa-check-circle"></i> 1 revision</li>
+                    </ul>
+                    <a href="#" class="btn-outline" data-page="contact" style="width:100%;justify-content:center;">Get Started</a>
+                </div>
+                <div class="pricing-card popular">
+                    <div class="popular-badge">Most Popular</div>
+                    <h3>Standard</h3>
+                    <div class="price-tag">$999 <span>/ project</span></div>
+                    <ul class="pricing-features">
+                        <li><i class="fas fa-check-circle"></i> 10‑page website</li>
+                        <li><i class="fas fa-check-circle"></i> Custom design</li>
+                        <li><i class="fas fa-check-circle"></i> Advanced SEO</li>
+                        <li><i class="fas fa-check-circle"></i> 3 revisions</li>
+                        <li><i class="fas fa-check-circle"></i> E‑commerce ready</li>
+                    </ul>
+                    <a href="#" class="btn-primary" data-page="contact" style="width:100%;">Get Started</a>
+                </div>
+                <div class="pricing-card">
+                    <h3>Premium</h3>
+                    <div class="price-tag">$1,999 <span>/ project</span></div>
+                    <ul class="pricing-features">
+                        <li><i class="fas fa-check-circle"></i> Unlimited pages</li>
+                        <li><i class="fas fa-check-circle"></i> Full e‑commerce</li>
+                        <li><i class="fas fa-check-circle"></i> Premium SEO</li>
+                        <li><i class="fas fa-check-circle"></i> Unlimited revisions</li>
+                        <li><i class="fas fa-check-circle"></i> 1 year support</li>
+                    </ul>
+                    <a href="#" class="btn-outline" data-page="contact" style="width:100%;justify-content:center;">Get Started</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== PRODUCTS PAGE ===== -->
+    <section id="products" class="page">
+        <div class="container" style="padding: 80px 0;">
+            <div class="section-header">
+                <span class="section-label">Products</span>
+                <h2 class="section-title">Ready‑to‑Use Digital Products</h2>
+                <p class="section-sub">Templates and tools to jumpstart your next project.</p>
+            </div>
+            <div class="grid-3">
+                <div class="product-card">
+                    <div class="card-icon" style="margin:0 auto 24px;"><i class="fas fa-file-code"></i></div>
+                    <h3>Pexel Starter</h3>
+                    <div class="price-tag" style="font-size:2.2rem;">$49 <span>/ one‑time</span></div>
+                    <p style="color:var(--text-secondary);margin-bottom:24px;">5‑page HTML/CSS template<br>Fully responsive<br>Modern design<br>Free updates</p>
+                    <a href="#" class="btn-primary" data-page="contact" style="width:100%;">Buy Now</a>
+                </div>
+                <div class="product-card">
+                    <div class="card-icon" style="margin:0 auto 24px;"><i class="fas fa-store"></i></div>
+                    <h3>Pexel Commerce</h3>
+                    <div class="price-tag" style="font-size:2.2rem;">$99 <span>/ one‑time</span></div>
+                    <p style="color:var(--text-secondary);margin-bottom:24px;">E‑commerce template<br>Cart & checkout<br>Product filtering<br>Payment gateway ready</p>
+                    <a href="#" class="btn-primary" data-page="contact" style="width:100%;">Buy Now</a>
+                </div>
+                <div class="product-card">
+                    <div class="card-icon" style="margin:0 auto 24px;"><i class="fas fa-rocket"></i></div>
+                    <h3>Pexel Pro Suite</h3>
+                    <div class="price-tag" style="font-size:2.2rem;">$199 <span>/ one‑time</span></div>
+                    <p style="color:var(--text-secondary);margin-bottom:24px;">All templates bundle<br>Figma source files<br>Priority support<br>Commercial license</p>
+                    <a href="#" class="btn-primary" data-page="contact" style="width:100%;">Buy Now</a>
+                </div>
+            </div>
+
+            <!-- DIGITAL TOOLS -->
+            <div style="margin-top: 100px;">
+                <div class="section-header">
+                    <span class="section-label">Digital Tools</span>
+                    <h2 class="section-title">Handcrafted for Creators</h2>
+                    <p class="section-sub">Tools to make your workflow easier and faster.</p>
+                </div>
+                <div class="grid-3">
+                    <div class="card" style="text-align:center;">
+                        <div class="card-icon" style="margin:0 auto 24px;"><i class="fas fa-magic"></i></div>
+                        <h3>Pexel SEO Analyzer</h3>
+                        <p>Scan your website for SEO issues and get actionable fixes.</p>
+                    </div>
+                    <div class="card" style="text-align:center;">
+                        <div class="card-icon" style="margin:0 auto 24px;"><i class="fas fa-image"></i></div>
+                        <h3>Pexel Image Optimizer</h3>
+                        <p>Compress images without losing quality for faster load times.</p>
+                    </div>
+                    <div class="card" style="text-align:center;">
+                        <div class="card-icon" style="margin:0 auto 24px;"><i class="fas fa-chart-pie"></i></div>
+                        <h3>Pexel Analytics</h3>
+                        <p>Simple, privacy‑focused analytics for your website.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== CONTACT PAGE ===== -->
+    <section id="contact" class="page">
+        <div class="container" style="padding: 80px 0;">
+            <div class="section-header">
+                <span class="section-label">Contact</span>
+                <h2 class="section-title">Let's Build Something Amazing</h2>
+                <p class="section-sub">Have a project in mind? Drop us a line and we'll get back within 24 hours.</p>
+            </div>
+
+            <div class="contact-grid">
+                <div class="contact-info">
+                    <div class="contact-item">
+                        <i class="fas fa-envelope"></i>
+                        <div>
+                            <h4>Email</h4>
+                            <p>hello@pexelwebstudio.com</p>
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fas fa-phone-alt"></i>
+                        <div>
+                            <h4>Phone</h4>
+                            <p>+1 (555) 123‑4567</p>
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <div>
+                            <h4>Office</h4>
+                            <p>123 Design Street, Creative City, CA 90210</p>
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fas fa-clock"></i>
+                        <div>
+                            <h4>Working Hours</h4>
+                            <p>Mon‑Fri: 9am – 6pm<br>Sat: 10am – 2pm</p>
+                        </div>
+                    </div>
+                </div>
+
+                <form class="contact-form" onsubmit="event.preventDefault(); alert('Thank you! Your message has been sent. (This is a demo.)');">
+                    <input type="text" placeholder="Your Name" required>
+                    <input type="email" placeholder="Your Email" required>
+                    <input type="text" placeholder="Subject">
+                    <textarea placeholder="Tell us about your project..." required></textarea>
+                    <button type="submit" class="btn-primary btn-lg" style="width:100%;">Send Message <i class="fas fa-paper-plane"></i></button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== FOOTER ===== -->
+    <footer>
+        <div class="container footer-content">
+            <div class="logo">
+                <a href="#" data-page="home" style="font-size:1.4rem;"><i class="fas fa-cube"></i>Pexel<span>Studio</span></a>
+            </div>
+            <div class="footer-links">
+                <a href="#" data-page="home">Home</a>
+                <a href="#" data-page="about">About</a>
+                <a href="#" data-page="services">Services</a>
+                <a href="#" data-page="products">Products</a>
+                <a href="#" data-page="contact">Contact</a>
+            </div>
+            <div class="social-icons">
+                <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+            </div>
+        </div>
+        <div class="container">
+            <p class="copyright">© 2025 Pexel Web Studio. All rights reserved. Crafted with <i class="fas fa-heart"></i></p>
+        </div>
+    </footer>
+
+    <!-- ===== JAVASCRIPT ===== -->
+    <script>
+        (function() {
+            const pages = document.querySelectorAll('.page');
+            const navLinks = document.querySelectorAll('[data-page]');
+
+            function showPage(pageId) {
+                pages.forEach(page => page.classList.remove('active'));
+                const target = document.getElementById(pageId);
+                if (target) target.classList.add('active');
+
+                document.querySelectorAll('.nav-links a[data-page]').forEach(link => {
+                    link.classList.remove('active');
+                    if (link.getAttribute('data-page') === pageId) {
+                        link.classList.add('active');
+                    }
+                });
+
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            }
+
+            navLinks.forEach(link => {
+                link.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    const pageId = this.getAttribute('data-page');
+                    if (pageId) showPage(pageId);
+                });
+            });
+
+            if (window.location.hash) {
+                const hash = window.location.hash.substring(1);
+                if (document.getElementById(hash)) {
+                    showPage(hash);
+                }
+            }
+        })();
+    </script>
+</body>
+</html>
